@@ -11,8 +11,8 @@ public class MapSlider : MonoBehaviour
     [SerializeField] private TMP_Text _milesText;
     [SerializeField] private SpeedText _speedText;
 
-   
-
+    private float _valueFactor = 0.45f;
+    
     private void Update()
     {
         CheckPlayerPosition();
@@ -20,7 +20,7 @@ public class MapSlider : MonoBehaviour
 
     private void CheckPlayerPosition()
     {
-        _slider.value += _speedText.Speed * 0.45f * Time.deltaTime;
+        _slider.value += _speedText.Speed * _valueFactor * Time.deltaTime;
         _milesText.text = ((int)_slider.value).ToString() + " / 600 Miles";
     }
 }
