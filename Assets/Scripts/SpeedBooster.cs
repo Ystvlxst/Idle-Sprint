@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SpeedBooster : MonoBehaviour
 {
-    [SerializeField] PlayerMover _player;
+    [SerializeField] PlayerMover _playerMover;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Player player))
         {
-            _player.BoostSpeed(2f);
+            _playerMover.BoostSpeed(-2f);
         }
     }
 }

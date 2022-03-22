@@ -20,7 +20,7 @@ public class MapSlider : MonoBehaviour
 
     private void CheckPlayerPosition()
     {
-        _slider.value += _speedText.Speed * _valueFactor * Time.deltaTime;
+        _slider.value -= _speedText.Speed * _valueFactor * Time.deltaTime;
         _milesText.text = ((int)_slider.value).ToString() + " / 600 Miles";
     }
 }

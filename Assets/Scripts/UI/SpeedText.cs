@@ -21,6 +21,6 @@ public class SpeedText : MonoBehaviour
     private void CheckSpeed()
     {
         _speed = _target.Speed * _milesFactor;
-        _speedLabel.text = ((int)_speed) + " MPH";
+        _speedLabel.text = ((int)-_speed) + " MPH";
     }
 }

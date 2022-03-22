@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class PlayerMover : MonoBehaviour, IDragHandler
 {
+    [SerializeField] private GameObject _ground;
     [SerializeField] private Player _player;
     [SerializeField] private float _speed;
 
@@ -19,10 +20,10 @@ public class PlayerMover : MonoBehaviour, IDragHandler
 
     private void MoveForvard()
     {
-        Vector3 position = _player.transform.position;
-        _speed += Time.deltaTime * _speedFactor;
+        Vector3 position = _ground.transform.position;
+        _speed -= Time.deltaTime * _speedFactor;
         position.z += _speed * Time.deltaTime;
-        _player.transform.position = position;
+        _ground.transform.position = position;
     }
 
     public void OnDrag(PointerEventData eventData)

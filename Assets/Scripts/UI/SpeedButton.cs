@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class SpeedButton : MonoBehaviour
 {
-    [SerializeField] private Button _speedButton;
+    [SerializeField] private Button _button;
     [SerializeField] private Text _levelText;
     [SerializeField] private Text _pricelText;
     [SerializeField] private PlayerMover _playerMover;
     [SerializeField] private Player _player;
-    [SerializeField] private ParticleSystem _clickButton;
+    [SerializeField] private ParticleSystem _clickButtonEffect;
 
     private int _level = 1;
     private int _boost = 1;
@@ -20,22 +20,22 @@ public class SpeedButton : MonoBehaviour
 
     private void OnEnable()
     {
-        _speedButton.onClick.AddListener(OnSpeedButtonClick);
+        _button.onClick.AddListener(OnSpeedButtonClick);
     }
 
     private void OnDisable()
     {
-        _speedButton.onClick.RemoveListener(OnSpeedButtonClick);
+        _button.onClick.RemoveListener(OnSpeedButtonClick);
     }
 
     private void OnSpeedButtonClick()
     {
         if (_player.HamCount >= _price)
         {
-            _clickButton.Play();
+            _clickButtonEffect.Play();
             _price += _priceIncrease;
             _player.BuyBooster(_price);
-            _playerMover.BoostSpeed(_boost);
+            _playerMover.BoostSpeed(-_boost);
             _level++;
             _levelText.text = "Level " + _level;
             _pricelText.text = _price.ToString();

@@ -7,7 +7,8 @@ public class CameraMover : MonoBehaviour
     [SerializeField] private Player _target;
     [SerializeField] private Vector3 _position;
 
-    private int _cameraPositionZ = 7;
+    private float _cameraPositionZ = 7;
+
     private void LateUpdate()
     {
         transform.position = new Vector3(_position.x, _position.y, _target.transform.position.z - _cameraPositionZ);
